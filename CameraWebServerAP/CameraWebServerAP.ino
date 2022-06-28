@@ -1,5 +1,6 @@
 #include "esp_camera.h"
 #include <WiFi.h>
+#include <WiFiAP.h>
 
 //
 // WARNING!!! PSRAM IC required for UXGA resolution and high JPEG quality
@@ -90,10 +91,10 @@ void setup() {
   s->set_hmirror(s, 1);
 #endif
 
-  WiFi.begin(ssid, password);
 
   WiFi.softAP(ssid, password);
   IPAddress myIP = WiFi.softAPIP();
+  
   startCameraServer();
 
   Serial.print("Camera Ready! Use 'http://");
